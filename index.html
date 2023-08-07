@@ -12,7 +12,7 @@
     <div class="header-container">
     <div class="header-content">
     <img src="images/leinster.png" alt="Harp Icon" class="header-icon">
-    <h1>Pretoria Leinster Lodge #743</h1>
+    <h1>Pretoria Leinster Lodge #743 I.C.</h1>
 
     </div>
     <nav>
@@ -61,15 +61,9 @@
 
 
     <div id="members" class="tabContent">
-        <h2>Our Members</h2>
+        <h2>Members area</h2>
         <div id="members-only" style="display: none;">
-            <ul>
-                <li>John Doe</li>
-                <li>William Smith</li>
-                <li>Elizabeth Johnson</li>
-                <li>Michael Brown</li>
-                <!-- Add more members as needed -->
-            </ul>
+            <p>Feast your eyes on some of our not-so-clandestine activities - because, hey, we do love a good bit of mystery, but not everything in Freemasonry is swathed in secrecy! </p>
         </div>
     </div>
 
@@ -101,45 +95,47 @@
 </footer>
 
 <script>
-    // Function to create a SHA-256 hash of a password
-    async function hashPassword(password) {
-        const msgUint8 = new TextEncoder().encode(password);
-        const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashedPassword = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        return hashedPassword;
-    }
+    $(document).ready(function() {
+        var passwordArray = [115, 101, 99, 114, 101, 116];
+        var password = String.fromCharCode.apply(null, passwordArray);
+        var currentActiveTab = '#home'; // Initial active tab
 
-    $(document).ready(async function() {
-        const storedHashedPassword = "your hashed password"; // Put your hashed password here
         $('.tabContent').hide();
         $('#home').show();
         $('#tabs li a:first').addClass('active');
 
-        $('#tabs a').click(async function(e) {
+        $('#tabs a').click(function(e) {
             e.preventDefault();
-            if ($(this).hasClass('active')){
-                return;
-            }
-            else {
-                $('.active').removeClass('active');
-                $(this).addClass('active');
-                $('.tabContent').hide();
-                var tab = $(this).attr('href');
-                if (tab === "#members") {
-                    var password = prompt("Please enter password:");
-                    var hashedPassword = await hashPassword(password);
-                    if (hashedPassword === storedHashedPassword) {
-                        $(tab).fadeIn();
-                    } else {
-                        alert("Incorrect password. Access denied.")
-                    }
+
+            var tab = $(this).attr('href');
+            if (tab === "#members") {
+                var enteredPassword = prompt("Please enter password:");
+                if (enteredPassword !== password) {
+                    alert("Incorrect password. Access denied.");
+                    // Set the previous active tab
+                    $('#tabs a[href="' + currentActiveTab + '"]').addClass('active');
+                    $(currentActiveTab).fadeIn();
                 } else {
-                    $(tab).fadeIn();
+                    // Password is correct, so we update the current tab
+                    updateActiveTab($(this), tab);
+                    // Show the members-only section
+                    $('#members-only').show();
                 }
+            } else {
+                updateActiveTab($(this), tab);
             }
         });
+
+        function updateActiveTab(tabElement, tabId) {
+            $('.active').removeClass('active');
+            tabElement.addClass('active');
+            $('.tabContent').hide();
+            $(tabId).fadeIn();
+            currentActiveTab = tabId; // Store current active tab
+        }
     });
+
+
 
 </script>
 
