@@ -4,6 +4,8 @@
     <title>Freemason Lodge</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+
 </head>
 <body>
 <header>
@@ -17,8 +19,8 @@
         <ul id="tabs">
             <li><a href="#home">Home</a></li>
             <li><a href="#history">History</a></li>
-            <li><a href="#members">Members</a></li>
             <li><a href="#events">Events</a></li>
+            <li><a href="#members">Members Area</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact Us</a></li>
         </ul>
@@ -56,15 +58,20 @@
 
     </div>
 
+
+
+    <button id="login">Login</button>
     <div id="members" class="tabContent">
         <h2>Our Members</h2>
-        <ul>
-            <li>John Doe</li>
-            <li>William Smith</li>
-            <li>Elizabeth Johnson</li>
-            <li>Michael Brown</li>
-            <!-- Add more members as needed -->
-        </ul>
+        <div id="members-only" style="display: none;">
+            <ul>
+                <li>John Doe</li>
+                <li>William Smith</li>
+                <li>Elizabeth Johnson</li>
+                <li>Michael Brown</li>
+                <!-- Add more members as needed -->
+            </ul>
+        </div>
     </div>
 
 
@@ -113,6 +120,36 @@
                 $(tab).fadeIn(); // Show content for the active tab
             }
         });
+
+        let auth0Client;
+
+        async function initAuth0() {
+            auth0Client = await createAuth0Client({
+                domain: 'dev-q1dij6ps22c6lljo.us.auth0.com',
+                client_id: 'CSbkbUEFc8cejuMFnJnJ4ZcWstkRRUgB',
+                redirect_uri: window.location.href,
+            });
+
+            if (window.location.search.includes('code=')) {
+                await auth0Client.handleRedirectCallback();
+                window.history.replaceState({}, document.title, '/');
+            }
+
+            const isAuthenticated = await auth0Client.isAuthenticated();
+
+            if (isAuthenticated) {
+                // show the members-only content
+                document.getElementById('members-only').style.display = 'block';
+            }
+
+            // add event listener here
+            document.getElementById('login').addEventListener('click', () => {
+                console.log("pressed");
+                auth0Client.loginWithRedirect();
+            });
+        }
+
+        initAuth0();
     });
 </script>
 
