@@ -29,6 +29,21 @@
         }
     </style>
     <script>
+        function loadAdminPage() {
+            document.getElementById('content').innerHTML = '<h2>Welcome Admin</h2>';
+            document.getElementById('adminSection').style.display = 'block'; // Show the admin section
+        }
+
+        function loadSubscriberPage() {
+            document.getElementById('content').innerHTML = '<h2>Welcome Subscriber</h2>';
+            document.getElementById('adminSection').style.display = 'none'; // Hide the admin section
+        }
+
+        function loadPublicPage() {
+            document.getElementById('content').innerHTML = '<h2>Welcome Public</h2>';
+            document.getElementById('adminSection').style.display = 'none'; // Hide the admin section
+        }
+
         window.addEventListener('load', function () {
 
             var webAuth = new auth0.WebAuth({
@@ -105,7 +120,13 @@
 </div>
 <div id="content"></div>
 
+<div id="adminSection" style="display: none;">
+    <h2>Admin Section</h2>
+    <!-- Add your admin content here -->
+</div>
+
 </body>
-<script src="main.js"></script>
+
+<!--<script src="main.js"></script>-->
 </html>
 
