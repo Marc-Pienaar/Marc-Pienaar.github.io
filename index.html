@@ -1,206 +1,76 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--    <meta name="description" content="PTA Leinster Lodge 743 - Website Under Construction">-->
-<!--    <title>PTA Leinster Lodge 743 Test Page</title>-->
-<!--&lt;!&ndash;    <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>&ndash;&gt;-->
-<!--    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>-->
-
-<!--    <style>-->
-<!--        body {-->
-<!--            font-family: Arial, sans-serif;-->
-<!--            margin: 0;-->
-<!--            padding: 0;-->
-<!--            background-color: #f0f0f0;-->
-<!--            color: #333;-->
-<!--        }-->
-<!--        .container {-->
-<!--            max-width: 960px;-->
-<!--            margin: 0 auto;-->
-<!--            padding: 20px;-->
-<!--        }-->
-<!--        h1 {-->
-<!--            font-size: 2em;-->
-<!--            color: #009578;-->
-<!--        }-->
-<!--        p {-->
-<!--            font-size: 1.2em;-->
-<!--            line-height: 1.6;-->
-<!--        }-->
-<!--    </style>-->
-
-<!--    <script>-->
-<!--        let auth0 = null;-->
-
-<!--        async function createAuth0Client() {-->
-<!--            auth0 = await createAuth0Client({-->
-<!--                domain: 'dev-q1dij6ps22c6lljo.us.auth0.com',-->
-<!--                client_id: 'CSbkbUEFc8cejuMFnJnJ4ZcWstkRRUgB',-->
-<!--            });-->
-<!--        }-->
-
-<!--        window.onload = createAuth0Client;-->
-<!--    </script>-->
-
-<!--    &lt;!&ndash;    <script>&ndash;&gt;-->
-<!--&lt;!&ndash;        function loadAdminPage() {&ndash;&gt;-->
-<!--&lt;!&ndash;            document.getElementById('content').innerHTML = '<h2>Welcome Admin</h2>';&ndash;&gt;-->
-<!--&lt;!&ndash;            document.getElementById('adminSection').style.display = 'block'; // Show the admin section&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        function loadSubscriberPage() {&ndash;&gt;-->
-<!--&lt;!&ndash;            document.getElementById('content').innerHTML = '<h2>Welcome Subscriber</h2>';&ndash;&gt;-->
-<!--&lt;!&ndash;            document.getElementById('adminSection').style.display = 'none'; // Hide the admin section&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        function loadPublicPage() {&ndash;&gt;-->
-<!--&lt;!&ndash;            document.getElementById('content').innerHTML = '<h2>Welcome Public</h2>';&ndash;&gt;-->
-<!--&lt;!&ndash;            document.getElementById('adminSection').style.display = 'none'; // Hide the admin section&ndash;&gt;-->
-<!--&lt;!&ndash;        }&ndash;&gt;-->
-
-<!--&lt;!&ndash;        window.addEventListener('load', function () {&ndash;&gt;-->
-
-<!--&lt;!&ndash;            var webAuth = new auth0.WebAuth({&ndash;&gt;-->
-<!--&lt;!&ndash;                domain:       'dev-q1dij6ps22c6lljo.us.auth0.com',&ndash;&gt;-->
-<!--&lt;!&ndash;                clientID:     'CSbkbUEFc8cejuMFnJnJ4ZcWstkRRUgB',&ndash;&gt;-->
-<!--&lt;!&ndash;                redirectUri:  window.location.href,&ndash;&gt;-->
-<!--&lt;!&ndash;                responseType: 'token id_token',&ndash;&gt;-->
-<!--&lt;!&ndash;                scope:        'openid profile email',&ndash;&gt;-->
-<!--&lt;!&ndash;                leeway:       60&ndash;&gt;-->
-<!--&lt;!&ndash;            });&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;            var loginBtn = document.getElementById('login');&ndash;&gt;-->
-
-<!--&lt;!&ndash;            loginBtn.addEventListener('click', function(e) {&ndash;&gt;-->
-<!--&lt;!&ndash;                e.preventDefault();&ndash;&gt;-->
-<!--&lt;!&ndash;                webAuth.authorize();&ndash;&gt;-->
-<!--&lt;!&ndash;            });&ndash;&gt;-->
-
-<!--&lt;!&ndash;            // After user is authenticated, get their profile&ndash;&gt;-->
-<!--&lt;!&ndash;            webAuth.parseHash(function(err, authResult) {&ndash;&gt;-->
-<!--&lt;!&ndash;                if (authResult && authResult.accessToken && authResult.idToken) {&ndash;&gt;-->
-<!--&lt;!&ndash;                    window.location.hash = '';&ndash;&gt;-->
-<!--&lt;!&ndash;                    console.log('Login Successful');&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    // Parse the JWT (JSON Web Token) from the idToken&ndash;&gt;-->
-<!--&lt;!&ndash;                    var jwt = parseJwt(authResult.idToken);&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    // Now you have the user's information, including their roles&ndash;&gt;-->
-<!--&lt;!&ndash;                    var roles = jwt['http://ptaleinster743.com/roles'];&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    // Store roles in the session&ndash;&gt;-->
-<!--&lt;!&ndash;                    sessionStorage.setItem('roles', JSON.stringify(roles));&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    // Load the correct page based on roles&ndash;&gt;-->
-<!--&lt;!&ndash;                    loadPageBasedOnRole(roles);&ndash;&gt;-->
-<!--&lt;!&ndash;                } else if (err) {&ndash;&gt;-->
-<!--&lt;!&ndash;                    console.log('Login Failed', err);&ndash;&gt;-->
-<!--&lt;!&ndash;                }&ndash;&gt;-->
-<!--&lt;!&ndash;            });&ndash;&gt;-->
-
-<!--&lt;!&ndash;            function parseJwt (token) {&ndash;&gt;-->
-<!--&lt;!&ndash;                var base64Url = token.split('.')[1];&ndash;&gt;-->
-<!--&lt;!&ndash;                var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');&ndash;&gt;-->
-<!--&lt;!&ndash;                var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {&ndash;&gt;-->
-<!--&lt;!&ndash;                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);&ndash;&gt;-->
-<!--&lt;!&ndash;                }).join(''));&ndash;&gt;-->
-
-<!--&lt;!&ndash;                return JSON.parse(jsonPayload);&ndash;&gt;-->
-<!--&lt;!&ndash;            };&ndash;&gt;-->
-
-
-
-<!--&lt;!&ndash;            function loadPageBasedOnRole(roles) {&ndash;&gt;-->
-<!--&lt;!&ndash;                if (roles.includes('admin')) {&ndash;&gt;-->
-<!--&lt;!&ndash;                    loadAdminPage(); // function to load admin view&ndash;&gt;-->
-<!--&lt;!&ndash;                } else if (roles.includes('subscriber')) {&ndash;&gt;-->
-<!--&lt;!&ndash;                    loadSubscriberPage(); // function to load subscriber view&ndash;&gt;-->
-<!--&lt;!&ndash;                } else {&ndash;&gt;-->
-<!--&lt;!&ndash;                    loadPublicPage(); // function to load public view&ndash;&gt;-->
-<!--&lt;!&ndash;                }&ndash;&gt;-->
-<!--&lt;!&ndash;            }&ndash;&gt;-->
-
-
-
-<!--&lt;!&ndash;        });&ndash;&gt;-->
-<!--&lt;!&ndash;    </script>&ndash;&gt;-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="container">-->
-<!--    <h1>PTA Leinster Lodge 743 Test Page</h1>-->
-<!--    <button id="login">Login</button>-->
-<!--    <p>This website is currently under construction! Will be back soon through GitHub Pages. Stay tuned!</p>-->
-<!--</div>-->
-<!--<div id="content"></div>-->
-
-<!--<div id="adminSection" style="display: none;">-->
-<!--    <h2>Admin Section</h2>-->
-<!--    &lt;!&ndash; Add your admin content here &ndash;&gt;-->
-<!--</div>-->
-<!--<script>-->
-<!--    document.getElementById('Login').addEventListener('click', function() {-->
-<!--        auth0.loginWithRedirect({-->
-<!--            redirect_uri: window.location.origin,  // Replace with your callback URL-->
-<!--        });-->
-<!--    });-->
-
-<!--    if (window.location.search.includes('code=') && window.location.search.includes('state=')) {-->
-<!--        auth0.handleRedirectCallback().then((result) => {-->
-<!--            console.log('User logged in:', result);-->
-<!--        }).catch((error) => {-->
-<!--            console.log('Error:', error);-->
-<!--        });-->
-<!--    }-->
-<!--</script>-->
-<!--</body>-->
-
-<!--&lt;!&ndash;<script src="main.js"></script>&ndash;&gt;-->
-<!--</html>-->
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Members Only Page</title>
-    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
-    <script>
-        let auth0 = null;
-
-        const createAuth0ClientInstance = async () => {
-            auth0 = await createAuth0Client({
-                domain: 'dev-q1dij6ps22c6lljo.us.auth0.com',
-                client_id: 'CSbkbUEFc8cejuMFnJnJ4ZcWstkRRUgB',
-            });
-
-            if (window.location.search.includes('code=') && window.location.search.includes('state=')) {
-                await auth0.handleRedirectCallback();
-                window.history.replaceState({}, document.title, "/");
-            }
-
-            updateUI();
-        }
-
-        const updateUI = async () => {
-            if (await auth0.isAuthenticated()) {
-                document.getElementById("protected-content").style.display = "block";
-            } else {
-                auth0.loginWithRedirect({
-                    redirect_uri: window.location.origin
-                });
-            }
-        }
-
-        window.onload = createAuth0ClientInstance;
-    </script>
+    <title>Freemason Lodge</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
-<div id="protected-content" style="display: none;">
-    <h1>Welcome to the members-only page!</h1>
-    <!-- Put protected content here -->
+<header>
+    <h1>Welcome to Pretoria Leinster Lodge #743</h1>
+    <nav>
+        <ul id="tabs">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#members">Members</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div id="content">
+    <div id="home" class="tabContent">
+        <h2>Welcome</h2>
+        <p>Welcome to the Freemason Lodge #123...</p>
+    </div>
+
+    <div id="about" class="tabContent">
+        <h2>About Us</h2>
+        <p>We are a group of like-minded individuals...</p>
+    </div>
+
+    <div id="history" class="tabContent">
+        <h2>History</h2>
+<!--        <p>...</p>-->
+    </div>
+    <div id="events" class="tabContent">
+        <h2>Events</h2>
+        <!--        <p>...</p>-->
+    </div>
+    <div id="contact" class="tabContent">
+        <h2>Contact</h2>
+        <!--        <p>...</p>-->
+    </div>
+
 </div>
+
+<footer>
+    <p>&copy; 2023 Pretoria Leinster Lodge #743. All rights reserved.</p>
+</footer>
+
+<script>
+    $(document).ready(function() {
+        $('.tabContent').hide(); // Hide all content
+        $('#home').show(); // Show first tab content
+        $('#tabs li a:first').addClass('active'); // Set first tab to active
+
+        $('#tabs a').click(function(e) {
+            e.preventDefault();
+            if ($(this).hasClass('active')){ // If current tab is already active
+                return;
+            }
+            else {
+                $('.active').removeClass('active'); // Remove 'active' from current tab
+                $(this).addClass('active'); // Set this tab to active
+                $('.tabContent').hide(); // Hide all content
+                var tab = $(this).attr('href'); // Get the href attribute to identify the active tab + content
+                $(tab).fadeIn(); // Show content for the active tab
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
