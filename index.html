@@ -49,14 +49,13 @@
             });
 
             // After user is authenticated, get their profile
-            // After user is authenticated, get their profile
             webAuth.parseHash(function(err, authResult) {
                 if (authResult && authResult.accessToken && authResult.idToken) {
                     window.location.hash = '';
                     console.log('Login Successful');
 
-                    // Parse the JWT (JSON Web Token) from the accessToken
-                    var jwt = parseJwt(authResult.accessToken);
+                    // Parse the JWT (JSON Web Token) from the idToken
+                    var jwt = parseJwt(authResult.idToken);
 
                     // Now you have the user's information, including their roles
                     var roles = jwt['http://ptaleinster743.com/roles'];
@@ -80,6 +79,7 @@
 
                 return JSON.parse(jsonPayload);
             };
+
 
 
             function loadPageBasedOnRole(roles) {
