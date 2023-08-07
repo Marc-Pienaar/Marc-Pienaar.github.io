@@ -49,28 +49,38 @@
             });
 
             // After user is authenticated, get their profile
+            // After user is authenticated, get their profile
             webAuth.parseHash(function(err, authResult) {
                 if (authResult && authResult.accessToken && authResult.idToken) {
                     window.location.hash = '';
                     console.log('Login Successful');
 
-                    webAuth.client.userInfo(authResult.accessToken, function(err, user) {
-                        // Now you have the user's information, including their roles
-                        console.log(user); // <--- add this line
-                        var roles = user['http://ptaleinster743.com/roles'];
-                        console.log(roles); // <--- add this line
+                    // Parse the JWT (JSON Web Token) from the accessToken
+                    var jwt = parseJwt(authResult.accessToken);
 
-                        // Store roles in the session
-                        sessionStorage.setItem('roles', JSON.stringify(roles));
+                    // Now you have the user's information, including their roles
+                    var roles = jwt['http://ptaleinster743.com/roles'];
 
-                        // Load the correct page based on roles
-                        loadPageBasedOnRole(roles);
-                    });
+                    // Store roles in the session
+                    sessionStorage.setItem('roles', JSON.stringify(roles));
 
+                    // Load the correct page based on roles
+                    loadPageBasedOnRole(roles);
                 } else if (err) {
                     console.log('Login Failed', err);
                 }
             });
+
+            function parseJwt (token) {
+                var base64Url = token.split('.')[1];
+                var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+
+                return JSON.parse(jsonPayload);
+            };
+
 
             function loadPageBasedOnRole(roles) {
                 if (roles.includes('admin')) {
