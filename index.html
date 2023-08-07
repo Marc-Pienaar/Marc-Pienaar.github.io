@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="PTA Leinster Lodge 743 - Website Under Construction">
     <title>PTA Leinster Lodge 743 Test Page</title>
+    <script src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,6 +28,37 @@
             line-height: 1.6;
         }
     </style>
+    <script>
+        window.addEventListener('load', function () {
+
+            var webAuth = new auth0.WebAuth({
+                domain:       'dev-q1dij6ps22c6lljo.us.auth0.com',
+                clientID:     'CSbkbUEFc8cejuMFnJnJ4ZcWstkRRUgB',
+                redirectUri:  window.location.href,
+                responseType: 'token id_token',
+                scope:        'openid profile',
+                leeway:       60
+            });
+
+            var loginBtn = document.getElementById('login');
+
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                webAuth.authorize();
+            });
+
+            webAuth.parseHash(function(err, authResult) {
+                if (authResult && authResult.accessToken && authResult.idToken) {
+                    window.location.hash = '';
+                    console.log('Login Successful');
+                    // You can now use the access token to make authenticated requests
+                    // Or use the id token to get user information
+                } else if (err) {
+                    console.log('Login Failed', err);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <div class="container">
