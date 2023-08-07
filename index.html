@@ -4,15 +4,15 @@
     <title>Freemason Lodge</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+
 
 </head>
 <body>
 <header>
     <div class="header-container">
     <div class="header-content">
-    <img src="images/harp.png" alt="Harp Icon" class="header-icon">
-    <h1>Welcome to Pretoria Leinster Lodge #743</h1>
+    <img src="images/leinster.png" alt="Harp Icon" class="header-icon">
+    <h1>Pretoria Leinster Lodge #743</h1>
 
     </div>
     <nav>
@@ -60,7 +60,6 @@
 
 
 
-    <button id="login">Login</button>
     <div id="members" class="tabContent">
         <h2>Our Members</h2>
         <div id="members-only" style="display: none;">
@@ -102,56 +101,48 @@
 </footer>
 
 <script>
-    $(document).ready(function() {
-        $('.tabContent').hide(); // Hide all content
-        $('#home').show(); // Show first tab content
-        $('#tabs li a:first').addClass('active'); // Set first tab to active
+    // Function to create a SHA-256 hash of a password
+    async function hashPassword(password) {
+        const msgUint8 = new TextEncoder().encode(password);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashedPassword = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        return hashedPassword;
+    }
 
-        $('#tabs a').click(function(e) {
+    $(document).ready(async function() {
+        const storedHashedPassword = "your hashed password"; // Put your hashed password here
+        $('.tabContent').hide();
+        $('#home').show();
+        $('#tabs li a:first').addClass('active');
+
+        $('#tabs a').click(async function(e) {
             e.preventDefault();
-            if ($(this).hasClass('active')){ // If current tab is already active
+            if ($(this).hasClass('active')){
                 return;
             }
             else {
-                $('.active').removeClass('active'); // Remove 'active' from current tab
-                $(this).addClass('active'); // Set this tab to active
-                $('.tabContent').hide(); // Hide all content
-                var tab = $(this).attr('href'); // Get the href attribute to identify the active tab + content
-                $(tab).fadeIn(); // Show content for the active tab
+                $('.active').removeClass('active');
+                $(this).addClass('active');
+                $('.tabContent').hide();
+                var tab = $(this).attr('href');
+                if (tab === "#members") {
+                    var password = prompt("Please enter password:");
+                    var hashedPassword = await hashPassword(password);
+                    if (hashedPassword === storedHashedPassword) {
+                        $(tab).fadeIn();
+                    } else {
+                        alert("Incorrect password. Access denied.")
+                    }
+                } else {
+                    $(tab).fadeIn();
+                }
             }
         });
-
-        let auth0Client;
-
-        async function initAuth0() {
-            auth0Client = await createAuth0Client({
-                domain: 'dev-q1dij6ps22c6lljo.us.auth0.com',
-                client_id: 'CSbkbUEFc8cejuMFnJnJ4ZcWstkRRUgB',
-                redirect_uri: window.location.href,
-            });
-
-            if (window.location.search.includes('code=')) {
-                await auth0Client.handleRedirectCallback();
-                window.history.replaceState({}, document.title, '/');
-            }
-
-            const isAuthenticated = await auth0Client.isAuthenticated();
-
-            if (isAuthenticated) {
-                // show the members-only content
-                document.getElementById('members-only').style.display = 'block';
-            }
-
-            // add event listener here
-            document.getElementById('login').addEventListener('click', () => {
-                console.log("pressed");
-                auth0Client.loginWithRedirect();
-            });
-        }
-
-        initAuth0();
     });
+
 </script>
+
 
 </body>
 </html>
