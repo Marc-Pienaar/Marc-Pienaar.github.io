@@ -54,6 +54,7 @@
                     console.log('Login Successful');
 
                     webAuth.client.userInfo(authResult.accessToken, function(err, user) {
+                        console.log(user);  // <-- add this line
                         // Now you have the user's information, including their roles
                         var roles = user['http://ptaleinster743.com/roles'];
 
