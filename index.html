@@ -63,6 +63,13 @@
 
     <div class="tabContent" id="members">
         <h2>Members area</h2>
+        <div id="password-form">
+            <form id="member-access-form">
+                <label for="password-input">Enter password:</label>
+                <input type="password" id="password-input" name="password" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
         <div id="members-only" style="display: none;">
             <p>Feast your eyes on some of our not-so-clandestine activities - because, hey, we do love a good bit of
                 mystery, but not everything in Freemasonry is swathed in secrecy! </p>
@@ -171,7 +178,7 @@
                     <td>${event.Event}</td>
                     <td>${event.Place}</td>
                     <td>${event.Address}</td>
-                    
+
                 </tr>`;
                 });
                 table.innerHTML = rows;
