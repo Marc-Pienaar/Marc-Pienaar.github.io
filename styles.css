@@ -165,7 +165,7 @@ footer {
     border: 2px solid #D3A625;
     margin: 0px;
     width: 100%;
-    height: calc(100vh - 250px);
+    height: calc(100vh - 200px);
     overflow: auto;
 }
 

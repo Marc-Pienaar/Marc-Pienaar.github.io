@@ -81,54 +81,22 @@
             </ul>
         </div>
 
-        <table class="event-table">
-            <thead>
-            <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Event</th>
-            </tr>
-            </thead>
+            <table class="event-table">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Event</th>
+                    <th>Place</th>
+                    <th>Address</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Rows will be populated here dynamically -->
+                </tbody>
+            </table>
 
-            <tbody>
-            <tr class="royal-arch">
-                <td><strong>30 August 2023</strong></td>
-                <td>TBA</td>
-                <td>Erin Chapter in Roodepoort (Royal Arch)</td>
-            </tr>
-            <tr>
-                <td><strong>31 August 2023</strong></td>
-                <td>19H00</td>
-                <td>Class of Instruction at Roodepoort Masonic Centre</td>
-            </tr>
-            <tr>
-                <td><strong>1 September 2023</strong></td>
-                <td>19H30</td>
-                <td>Pretoria Leinster Lodge No: 743</td>
-            </tr>
-            <tr class="royal-arch">
-                <td><strong>2 September 2023</strong></td>
-                <td>13h00</td>
-                <td>District Grand RA Chapter Bi-Annual Convocation at Kensington Masonic Hall</td>
-            </tr>
-            <tr class="installation">
-                <td><strong>9 September 2023</strong></td>
-                <td>14H00</td>
-                <td>PGL Stated Communication</td>
-            </tr>
-            <tr class="installation">
-                <td><strong>13 September 2023</strong></td>
-                <td>TBA</td>
-                <td>Petit Lodge No: 901</td>
-            </tr>
-            <tr class="installation">
-                <td><strong>14 September 2023</strong></td>
-                <td>TBA</td>
-                <td>Tirmochree Lodge No: 523</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+        </div>
     </div>
 
 
@@ -188,6 +156,30 @@
             $(tabId).fadeIn();
             currentActiveTab = tabId; // Store current active tab
         }
+
+        fetch('events/events.csv')
+            .then(response => response.text())
+            .then(csvString => {
+                // Parse the CSV String
+                let results = Papa.parse(csvString, { header: true, skipEmptyLines: true });
+                let table = document.querySelector('.event-table tbody');
+                let rows = '';
+                results.data.forEach(event => {
+                    rows += `<tr class="${event.Type.toLowerCase()}">
+                    <td>${event.Date}</td>
+                    <td>${event.Time}</td>
+                    <td>${event.Event}</td>
+                    <td>${event.Place}</td>
+                    <td>${event.Address}</td>
+                    
+                </tr>`;
+                });
+                table.innerHTML = rows;
+            })
+            .catch(error => {
+                console.error("Error loading or parsing events.csv:", error);
+            });
+
     });
 
 
