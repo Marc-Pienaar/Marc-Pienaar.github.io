@@ -97,3 +97,102 @@ footer {
     line-height: 1.6;
 }
 
+
+.tabContent {
+    width: 100%;
+    display: none; /* Initially hidden */
+}
+
+.tabContent.active {
+    display: block; /* Shows the active tab's content */
+}
+
+.event-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.event-table th, .event-table td {
+    padding: 8px 15px;
+    border: 1px solid #b0c4de; /* Light steel blue for the table cells */
+}
+
+.event-table th {
+    background-color: #3a5fcd; /* Masonic blue for table headers */
+    color: #ffffff;
+}
+
+.event-table tr.royal-arch td {
+    background-color: #8b0000; /* Royal Arch Red */
+    color: #ffffff;
+}
+
+.event-table tr.installation td {
+    background-color: #daa520; /* Freemason gold */
+    color: #2c3e50;
+}
+.legend li {
+    position: relative;
+    list-style-type: none;
+    padding-left: 20px; /* Adjust as needed */
+}
+
+.legend li:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    transform: translateY(-50%);
+    background-color: #3a5fcd; /* Masonic blue for general events */
+}
+
+.legend li.royal-arch:before {
+    background-color: #8b0000; /* Royal Arch Red */
+}
+
+.legend li.installation:before {
+    background-color: #daa520; /* Freemason gold */
+}
+
+
+
+/* This styles the scrollable part of the events content. It's set up similarly to the history content. */
+.events-scroll-container {
+    background: #F5F5DC;
+    color: #5A463A;
+    border: 2px solid #D3A625;
+    margin: 0px;
+    width: 100%;
+    height: calc(100vh - 250px);
+    overflow: auto;
+}
+
+
+
+
+
+/* Hides all tab content by default */
+.tabContent {
+    display: none;
+}
+
+/* Shows the active tab's content (assuming you're using a class "active" for the active tab) */
+.tabContent.active {
+    display: block;
+}
+
+
+/* For the legend positioning */
+.legend {
+    padding-bottom: 20px; /* Adds some space below the legend */
+}
+
+#content {
+    padding-bottom: 70px; /* Adjusted to be more than the footer height, tweak as necessary */
+}
+
+
+
+

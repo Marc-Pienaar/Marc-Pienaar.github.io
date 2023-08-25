@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Freemason Lodge</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="styles.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
@@ -10,33 +10,32 @@
 <body>
 <header>
     <div class="header-container">
-    <div class="header-content">
-    <img src="images/leinster.png" alt="Harp Icon" class="header-icon">
-    <h1>Pretoria Leinster Lodge #743 I.C.</h1>
+        <div class="header-content">
+            <img alt="Harp Icon" class="header-icon" src="images/leinster.png">
+            <h1>Pretoria Leinster Lodge #743 I.C.</h1>
 
-    </div>
-    <nav>
-        <ul id="tabs">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#history">History</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#members">Members Area</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-        </ul>
-    </nav>
+        </div>
+        <nav>
+            <ul id="tabs">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#members">Members Area</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
     </div>
 </header>
 
 <div id="content">
-    <div id="home" class="tabContent">
+    <div class="tabContent" id="home">
         <h2>Welcome</h2>
         <p>Welcome to the Freemason Lodge #123...</p>
     </div>
 
 
-
-    <div id="history" class="tabContent">
+    <div class="tabContent" id="history">
         <h2>History of Pretoria Leinster Lodge 743 Irish Constitution</h2>
         <h3>Founding</h3>
         <p>Pretoria Leinster Lodge 743 was founded in [YEAR]. The lodge was formed with the aim of... </p>
@@ -48,7 +47,8 @@
         <p>Some of the notable events in the history of the lodge include... </p>
 
         <h3>Current Era</h3>
-        <p>Currently, Pretoria Leinster Lodge 743 continues to be an active and vibrant part of the community, with members participating in... </p>
+        <p>Currently, Pretoria Leinster Lodge 743 continues to be an active and vibrant part of the community, with
+            members participating in... </p>
 
         <h3>Legacy and Impact</h3>
         <p>The Lodge has left a significant impact on... The efforts of the Lodge's members have resulted in... </p>
@@ -59,32 +59,86 @@
     </div>
 
 
-
-    <div id="members" class="tabContent">
+    <div class="tabContent" id="members">
         <h2>Members area</h2>
         <div id="members-only" style="display: none;">
-            <p>Feast your eyes on some of our not-so-clandestine activities - because, hey, we do love a good bit of mystery, but not everything in Freemasonry is swathed in secrecy! </p>
+            <p>Feast your eyes on some of our not-so-clandestine activities - because, hey, we do love a good bit of
+                mystery, but not everything in Freemasonry is swathed in secrecy! </p>
         </div>
     </div>
 
 
-    <div id="events" class="tabContent">
-        <h2>Events</h2>
-        <!--        <p>...</p>-->
+    <div class="tabContent" id="events">
+        <div class="events-scroll-container">
+        <div class="legend">
+            <h4>Legend:</h4>
+            <ul>
+                <li class="royal-arch">Royal Arch Event</li>
+                <li class="installation">Installation Event</li>
+                <li>General Event</li>
+            </ul>
+        </div>
+
+        <table class="event-table">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Event</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr class="royal-arch">
+                <td><strong>30 August 2023</strong></td>
+                <td>TBA</td>
+                <td>Erin Chapter in Roodepoort (Royal Arch)</td>
+            </tr>
+            <tr>
+                <td><strong>31 August 2023</strong></td>
+                <td>19H00</td>
+                <td>Class of Instruction at Roodepoort Masonic Centre</td>
+            </tr>
+            <tr>
+                <td><strong>1 September 2023</strong></td>
+                <td>19H30</td>
+                <td>Pretoria Leinster Lodge No: 743</td>
+            </tr>
+            <tr class="royal-arch">
+                <td><strong>2 September 2023</strong></td>
+                <td>13h00</td>
+                <td>District Grand RA Chapter Bi-Annual Convocation at Kensington Masonic Hall</td>
+            </tr>
+            <tr class="installation">
+                <td><strong>9 September 2023</strong></td>
+                <td>14H00</td>
+                <td>PGL Stated Communication</td>
+            </tr>
+            <tr class="installation">
+                <td><strong>13 September 2023</strong></td>
+                <td>TBA</td>
+                <td>Petit Lodge No: 901</td>
+            </tr>
+            <tr class="installation">
+                <td><strong>14 September 2023</strong></td>
+                <td>TBA</td>
+                <td>Tirmochree Lodge No: 523</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     </div>
 
-    <div id="about" class="tabContent">
+
+    <div class="tabContent" id="about">
         <h2>About Us</h2>
         <p>We are a group of like-minded individuals...</p>
     </div>
 
-    <div id="contact" class="tabContent">
+    <div class="tabContent" id="contact">
         <h2>Contact</h2>
         <!--        <p>...</p>-->
     </div>
-
-
-
 
 
 </div>
@@ -94,7 +148,7 @@
 </footer>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         var passwordArray = [115, 101, 99, 114, 101, 116];
         var password = String.fromCharCode.apply(null, passwordArray);
         var currentActiveTab = '#home'; // Initial active tab
@@ -103,7 +157,7 @@
         $('#home').show();
         $('#tabs li a:first').addClass('active');
 
-        $('#tabs a').click(function(e) {
+        $('#tabs a').click(function (e) {
             e.preventDefault();
 
             var tab = $(this).attr('href');
@@ -133,7 +187,6 @@
             currentActiveTab = tabId; // Store current active tab
         }
     });
-
 
 
 </script>
