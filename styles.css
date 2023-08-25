@@ -270,7 +270,16 @@ button:hover:not(:disabled) {
     border-radius: 4px;
     border: 1px solid #e0e0e0;
 }
- 
+.disclaimer {
+    background-color: #ffe58f; /* Pale yellow background for noticeability */
+    border: 1px solid #ffa940; /* Border color */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
 
 
 
