@@ -1,6 +1,6 @@
 // This is an object where you can store hymns by name
 var hymns = {
-    "Opening Hymn": `Hail, Eternal! by Whose aid
+    "Opening Ode": `Hail, Eternal! by Whose aid
 All created things were made;
 Heav’n and earth Thy vast design;
 Hear us, Architect Divine!
@@ -16,8 +16,8 @@ By the badge and mystic sign,
 Hear us, Architect Divine!
 
 So mote it be.`,
-    
-    "Closing Hymn": `Abide with me; fast falls the eventide;
+
+    "Closing Ode": `Abide with me; fast falls the eventide;
 The darkness deepens; Lord with me abide.
 When other helpers fail and comforts flee;
 Help of the helpless, O abide with me.
