@@ -9,6 +9,7 @@
 
 
 </head>
+
 <body>
 <header>
     <div class="header-container">
@@ -159,13 +160,28 @@
 <!--        <p>We are a group of like-minded individuals...</p>-->
 <!--    </div>-->
     <div class="tabContent" id="resources">
-        <h2>Resources & Links</h2>
-        <p>Here you will find various resources and links related to Freemasonry...</p>
+        <h4>Hymns</h4>
         <ul>
-            <li><a href="https://example.com">Resource 1</a></li>
-            <li><a href="https://example.com">Resource 2</a></li>
-            <!-- Add more links as needed -->
+            <li><a href="javascript:void(0);" onclick="showPopup('Opening Hymn')">Opening Hymn</a></li>
+            <li><a href="javascript:void(0);" onclick="showPopup('Closing Hymn')">Closing Hymn</a></li>
         </ul>
+
+
+
+        <!-- Popup (floating window) HTML structure -->
+        <div id="popup-window">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup()">&times;</span>
+                <h3 id="popup-title"></h3>
+                <p id="popup-text"></p>
+                <button onclick="copyToClipboard()">Copy to Clipboard</button>
+            </div>
+        </div>
+
+
+
+
+
     </div>
     <div class="tabContent" id="contact">
         <h2>Contact</h2>
@@ -181,118 +197,7 @@
     <p>&copy; 2023 Pretoria Leinster Lodge #743. All rights reserved.</p>
 </footer>
 
-<!--<script>-->
-<!--    $(document).ready(function () {-->
-<!--        var passwordArray = [115, 101, 99, 114, 101, 116];-->
-<!--        var password = String.fromCharCode.apply(null, passwordArray);-->
-<!--        var currentActiveTab = '#home'; // Initial active tab-->
 
-<!--        $('.tabContent').hide();-->
-<!--        $('#home').show();-->
-<!--        $('#tabs li a:first').addClass('active');-->
-
-<!--        $('#tabs a').click(function (e) {-->
-<!--            e.preventDefault();-->
-
-<!--            var tab = $(this).attr('href');-->
-<!--            if (tab === "#members") {-->
-<!--                var enteredPassword = prompt("Please enter password:");-->
-<!--                if (enteredPassword !== password) {-->
-<!--                    alert("Incorrect password. Access denied.");-->
-<!--                    // Set the previous active tab-->
-<!--                    $('#tabs a[href="' + currentActiveTab + '"]').addClass('active');-->
-<!--                    $(currentActiveTab).fadeIn();-->
-<!--                } else {-->
-<!--                    // Password is correct, so we update the current tab-->
-<!--                    updateActiveTab($(this), tab);-->
-<!--                    // Show the members-only section-->
-<!--                    $('#members-only').show();-->
-<!--                }-->
-<!--            } else {-->
-<!--                updateActiveTab($(this), tab);-->
-<!--            }-->
-<!--        });-->
-
-<!--        function updateActiveTab(tabElement, tabId) {-->
-<!--            $('.active').removeClass('active');-->
-<!--            tabElement.addClass('active');-->
-<!--            $('.tabContent').hide();-->
-<!--            $(tabId).fadeIn();-->
-<!--            currentActiveTab = tabId; // Store current active tab-->
-<!--        }-->
-
-<!--        fetch('events/events.csv')-->
-<!--            .then(response => response.text())-->
-<!--            .then(csvString => {-->
-<!--                // Parse the CSV String-->
-<!--                let results = Papa.parse(csvString, { header: true, skipEmptyLines: true });-->
-<!--                let table = document.querySelector('.event-table tbody');-->
-<!--                let rows = '';-->
-<!--                results.data.forEach(event => {-->
-<!--                    rows += `<tr class="${event.Type.toLowerCase()}">-->
-<!--                    <td>${event.Date}</td>-->
-<!--                    <td>${event.Time}</td>-->
-<!--                    <td>${event.Event}</td>-->
-<!--                    <td>${event.Place}</td>-->
-<!--                    <td>${event.Address}</td>-->
-
-<!--                </tr>`;-->
-<!--                });-->
-<!--                table.innerHTML = rows;-->
-<!--            })-->
-<!--            .catch(error => {-->
-<!--                console.error("Error loading or parsing events.csv:", error);-->
-<!--            });-->
-
-<!--    });-->
-<!--    const timelineInput = document.getElementById('timelineInput');-->
-<!--    const prevButton = document.getElementById('prevButton');-->
-<!--    const nextButton = document.getElementById('nextButton');-->
-<!--    const dateIndicator = document.getElementById('dateIndicator');-->
-
-<!--    const dates = {-->
-<!--        1: '1900',-->
-<!--        2: '1910',-->
-<!--        3: '1950',-->
-<!--        4: '2000',-->
-<!--        5: '2010',-->
-<!--        6: '2023'-->
-<!--    };-->
-
-<!--    timelineInput.addEventListener('input', updateEventDisplay);-->
-
-<!--    prevButton.addEventListener('click', function() {-->
-<!--        timelineInput.value = parseInt(timelineInput.value) - 1;-->
-<!--        updateEventDisplay();-->
-<!--    });-->
-
-<!--    nextButton.addEventListener('click', function() {-->
-<!--        timelineInput.value = parseInt(timelineInput.value) + 1;-->
-<!--        updateEventDisplay();-->
-<!--    });-->
-
-<!--    function updateEventDisplay() {-->
-<!--        let value = timelineInput.value;-->
-
-<!--        // Hide all timeline events-->
-<!--        document.querySelectorAll('.timeline-event').forEach(function(eventElem) {-->
-<!--            eventElem.style.display = 'none';-->
-<!--        });-->
-
-<!--        // Show the selected event-->
-<!--        document.querySelector(`.timeline-event[data-event="${value}"]`).style.display = 'block';-->
-
-<!--        // Update date indicator-->
-<!--        dateIndicator.textContent = dates[value];-->
-
-<!--        // Enable or disable previous/next buttons-->
-<!--        prevButton.disabled = value === timelineInput.min;-->
-<!--        nextButton.disabled = value === timelineInput.max;-->
-<!--    }-->
-
-<!--    // Initial call to set up correct button states and date-->
-<!--    updateEventDisplay();-->
-<!--</script>-->
 <script src="js/common.js"></script>
 <script src="js/home.js"></script>
 <script src="js/history.js"></script>

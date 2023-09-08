@@ -13,4 +13,14 @@ $(document).ready(function () {
         $(tab).fadeIn();
         currentActiveTab = tab; // Store current active tab
     });
+
 });
+function showPopup(title, content) {
+    document.getElementById('popup-title').innerText = title;
+    document.getElementById('popup-text').innerText = content;
+    document.getElementById('popup-window').style.display = 'block';
+}
+
+function closePopup() {
+    document.getElementById('popup-window').style.display = 'none';
+}
