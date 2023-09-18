@@ -127,6 +127,13 @@ footer {
     color: #ffffff;
 }
 
+.event-table tr.working td {
+    background-color: #3a5fcd;
+    color: #ffffff;
+}
+
+
+
 .event-table tr.installation td {
     background-color: #daa520; /* Freemason gold */
     color: #2c3e50;
@@ -147,6 +154,11 @@ footer {
     transform: translateY(-50%);
     background-color: #3a5fcd; /* Masonic blue for general events */
 }
+
+.legend li.working:before {
+    background-color: #3a5fcd; /* Masonic blue for general events */
+}
+
 
 .legend li.royal-arch:before {
     background-color: #8b0000; /* Royal Arch Red */
