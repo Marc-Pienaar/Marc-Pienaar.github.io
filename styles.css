@@ -128,7 +128,7 @@ footer {
 }
 
 .event-table tr.working td {
-    background-color: #3a5fcd;
+    background-color: #2a5815;
     color: #ffffff;
 }
 .event-table tr.general td {
@@ -163,7 +163,7 @@ footer {
 }
 
 .legend li.working:before {
-    background-color: #3a5fcd; /* Masonic blue for general events */
+    background-color: #2a5815; /* Masonic blue for general events */
 }
 
 
