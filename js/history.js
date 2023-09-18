@@ -4,12 +4,13 @@ const nextButton = document.getElementById('nextButton');
 const dateIndicator = document.getElementById('dateIndicator');
 
 const dates = {
-    1: '1900',
-    2: '1910',
-    3: '1950',
-    4: '2000',
-    5: '2010',
-    6: '2023'
+    1: 'Pre 1950',
+    2: '1950',
+    3: '1960',
+    4: '1970',
+    5: '2000',
+    6: '2010',
+    7: '2023'
 };
 
 timelineInput.addEventListener('input', updateEventDisplay);
