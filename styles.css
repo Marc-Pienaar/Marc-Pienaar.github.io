@@ -131,7 +131,10 @@ footer {
     background-color: #3a5fcd;
     color: #ffffff;
 }
-
+.event-table tr.general td {
+    background-color: #b9b9bf;
+    color: #09160e;
+}
 
 
 .event-table tr.installation td {
@@ -153,6 +156,10 @@ footer {
     height: 10px;
     transform: translateY(-50%);
     background-color: #3a5fcd; /* Masonic blue for general events */
+}
+
+.legend li.general:before {
+    background-color: #b9b9bf; /* Masonic blue for general events */
 }
 
 .legend li.working:before {
