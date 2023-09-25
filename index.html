@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <head>
     <title>Freemason Lodge</title>
     <link href="styles.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/MarkerCluster.Default.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.0/leaflet.markercluster.js"></script>
 
 
 </head>
@@ -24,6 +29,7 @@
             <ul id="tabs">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#history">History</a></li>
+                <li><a href="#lodge-locations">Locations</a></li>
                 <li><a href="#events">Events</a></li>
                 <li><a href="#members">Members Area</a></li>
 <!--                <li><a href="#about">About</a></li>-->
@@ -42,25 +48,6 @@
 
 
     <div class="tabContent" id="history">
-<!--        <h2>History of Pretoria Leinster Lodge 743 Irish Constitution</h2>-->
-<!--        <h3>Founding</h3>-->
-<!--        <p>Pretoria Leinster Lodge 743 was founded in [YEAR]. The lodge was formed with the aim of... </p>-->
-
-<!--        <h3>Early Years</h3>-->
-<!--        <p>In its early years, the lodge was situated at... The founding members included... </p>-->
-
-<!--        <h3>Milestone Events</h3>-->
-<!--        <p>Some of the notable events in the history of the lodge include... </p>-->
-
-<!--        <h3>Current Era</h3>-->
-<!--        <p>Currently, Pretoria Leinster Lodge 743 continues to be an active and vibrant part of the community, with-->
-<!--            members participating in... </p>-->
-
-<!--        <h3>Legacy and Impact</h3>-->
-<!--        <p>The Lodge has left a significant impact on... The efforts of the Lodge's members have resulted in... </p>-->
-
-<!--        <h3>Future Goals</h3>-->
-<!--        <p>Looking ahead, Pretoria Leinster Lodge 743 plans to... </p>-->
 
         <div class="timeline-container">
             <!-- DISCLAIMER ADDED HERE -->
@@ -76,28 +63,35 @@
                 <button id="nextButton">Next</button>
             </div>
             <div class="timeline-event" data-event="1">
-                <h3>Origins: Late 19th Century to Early 20th Century<sup>1</sup></h3>
+                <h3>Origins<sup>1</sup></h3>
                 <p>
-                    The first recorded desire to establish a Provincial Grand Lodge in South Africa traces back to a minute from Abercom Lodge No.159 on 29th August 1898. Driven by the presence of three active lodges under the Irish Constitution, W.Bro. Dr. E.H. Croghan initiated the discourse. Following detailed exchanges with Deputy Grand Secretary V.W.Bro. H.E. Flavelle, the decision was unanimous: a petition would be sent to the Grand Master for a Charter and to appoint W.Bro. Dr. Edward Henry Croghan as Provincial Grand Master.
+                    In 1772, Cape Town heralded the inception of its inaugural Masonic lodge, Lodge De Goede Hoop. This establishment marked the beginning of a flourishing Masonic influence. By 1812, the English Grand Lodge had established the British Lodge, and by 1860, the Scottish made their presence known. The 1890s saw the introduction of Irish Freemasonry to South Africa. By 1898, under the leadership of W.Bro. Dr. E.H. Croghan from Abercom Lodge No.159, the initiative for a Provincial Grand Lodge began. Following extensive consultations with Deputy Grand Secretary V.W.Bro. H.E. Flavelle, a unanimous decision was reached, leading to a formal petition to the Grand Master.
                 </p>
-                <h4>Significant Contributions of R.W. Bro. Kendal Franks</h4>
+
                 <p>
-                    R.W. Bro. Kendal Franks, associated with Abercom Lodge since August 1897, emerged as a pivotal figure during these foundational moments. Born in February 1851, Franks was related to notable families, excelling academically at the University of Dublin and making a name for himself as a prominent surgeon. His relocation to South Africa, initially due to his wife's health, brought his expertise to the region. Amidst the challenges of the Anglo-Boer War, wherein he served with distinction as a Consulting Surgeon, he stood out for his courage and service. Despite some criticisms during the war, his reputation was largely untarnished, leading to his knighthood by King Edward VII.
+                    Affiliated with Abercom Lodge since 1897, R.W. Bro. Kendal Franks played an instrumental role in this foundational period. An esteemed alumnus of the University of Dublin, Franks was renowned as a distinguished surgeon. His relocation to South Africa, primarily for his wife's health, turned out to be a boon for the region. Recognized for his valor during the tumultuous Anglo-Boer War, his exemplary efforts earned him a knighthood from King Edward VII.
                 </p>
-                <h4>St. Patrick's Lodge Declines</h4>
+                <figure>
+                    <img src="images/Kendal_franks.png" alt="Description of the Image">
+                    <figcaption>Sir Kendal Fanks (Source: Anglo-Boer War Museum. (n.d.). [Photograph]. Goldi Productions Ltd. https://www.goldiproductions.com/angloboerwarmuseum/Boer71n1_nurse_autographs1.html</figcaption>
+                </figure>
                 <p>
-                    While Abercorn Lodge spearheaded the initiative, St. Patrick's Lodge No. 199 in Cape Town had reservations. Their hesitance centered on the perceived premature need for a Provincial Grand Lodge, logistical challenges owing to the vast geographical distances, and governance concerns about being directed from the South African Republic. This did not deter Abercorn Lodge, which promptly relayed their petition and related correspondence to Dublin by 31st October 1898.
+                    St. Patrick's Lodge No. 199 in Cape Town exhibited reservations about the swift establishment of an Irish Provincial Grand Lodge. Concerns encompassed logistical challenges due to the vast territory and governance qualms. Nevertheless, with unwavering determination, Abercorn Lodge forwarded their petition to Dublin by October 1898.
                 </p>
-                <h4>Grand Lodge Deliberations</h4>
+
                 <p>
-                    The Grand Lodge deliberated extensively. The Abercom Lodge Minutes were notably silent on this matter until July 1899. However, the Anglo-Boer War brought unforeseen challenges, including the sad demise of W.Bro. E.H. Croghan. It was in these trying times that R.W. Bro. Kendal Franks stepped up as the successor. By 3rd March 1904, the Grand Lodge had given a positive nod to the 1898 petition, and the Duke of Abercorn appointed R.W.Bro Kendal Franks as the first Provincial Grand Master of South Africa. This was a title made even more prestigious by his subsequent knighthood.
+                    Abercom Lodge's Minutes showed restraint until July 1899. However, the Anglo-Boer War introduced unforeseen challenges, including the untimely passing of W.Bro. E.H. Croghan. Amid these challenges, R.W. Bro. Kendal Franks rose to prominence.
+                    By 1904, the Grand Lodge sanctioned the 1898 petition, and R.W.Bro Kendal Franks became the first Provincial Grand Master of the Provincial Grand Lodge (I.C).
+                    The first Quarterly Communication of the Provincial Grand Lodge of South Africa (I.C) was held 13 February, 1905, at the Plein Street Masonic temple in Johannesburg.
                 </p>
-                <h4>Establishment of Deputy Grand Master</h4>
-                <p>
-                    By May 1904, the Masonic leadership continued to evolve. Under the guidance of W.Bro. Dr. W.M. Russell, the Provincial Grand Master, W.Bro. Major T.M.M. Fuge was inaugurated as the Provincial Deputy Grand Master.
-                </p>
-                <h4>Masonic Lodges Pre-Provincial Grand Lodge Era</h4>
-                <p>Even before the Provincial Grand Lodge came into official existence, a range of lodges were actively operating under the Grand Lodge of Ireland:</p>
+
+                <figure>
+                    <img src="images/jhb-city-plein-street-masonic-temple-1905-ph1998-203.jpg.webp" alt="Description of the Image">
+                    <figcaption>Plein Street Masonic Temple c1905 [demolished in the late 1960s/early 1970s] (Source: Museum Africa, via
+                        <a href="https://johannesburg1912.com/2019/03/02/masonic-buildings-in-johannesburg/" target="_blank">Johannesburg 1912. (2019, March 2). Masonic buildings in Johannesburg</a>)</figcaption>
+                </figure>
+
+                <p>Even before the official establishment of the Provincial Grand Lodge of Ireland, several lodges were actively affiliated with the Grand Lodge of Ireland:</p>
                 <ul>
                     <li><strong>Cape Province:</strong></li>
                     <ul>
@@ -109,7 +103,7 @@
                     <ul>
                         <li>Hibernia Lodge No.365 - 1903</li>
                     </ul>
-                    <li><strong>In the North:</strong></li>
+                    <li><strong>Northern Region:</strong></li>
                     <ul>
                         <li>Abercor Lodge No. 159 (Oldest Irish Lodge in Africa) - 1895</li>
                         <li>Edward H. Croghan Lodge No.247 - 1898</li>
@@ -121,11 +115,11 @@
                     </ul>
                 </ul>
                 <p>
-                    The journey towards Masonic organization in the region saw notable landmarks in 1925 and 1932 with the foundation of the Provincial Grand Lodge in the Southern Cape and Natal, respectively.
+                    Masonic organization in the region saw significant milestones with the establishment of the Provincial Grand Lodge (I.C) in the Southern Cape in 1925 and in Natal in 1932.
                 </p>
-                <!-- The citation starts here -->
+
                 <p class="citation"><sup>1</sup> “The History of 100 Years Provincial Grand Lodge 1904-2004. Centenary Celebrations of the Provincial Grand Lodge of South Africa Northern under the Grand Lodge of Ireland”. Compiled by V. W. Bro. Rt. Rev. R.J.I. Steward. P.P.G. Chap., P.g. Stws. (Ire). February 2005.</p>
-                <!-- The citation ends here -->
+
             </div>
 
 
@@ -195,6 +189,12 @@
 
     </div>
 
+
+    <div class="tabContent" id="lodge-locations">
+        <h2>Lodge Locations</h2>
+        <!-- Container for the map -->
+        <div id="map" style="width: 100%; height: 400px;"></div>
+    </div>
 
     <div class="tabContent" id="members">
         <h2>Members area</h2>
@@ -290,7 +290,10 @@
 
 <script src="js/common.js"></script>
 <script src="js/home.js"></script>
+
 <script src="js/history.js"></script>
+<script src="js/lodgeMap.js"></script>
+
 <script src="js/members.js"></script>
 <script src="js/events.js"></script>
 <script src="js/resources.js"></script>

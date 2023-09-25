@@ -342,7 +342,33 @@ button:hover:not(:disabled) {
     color: black;
 }
 
+#map {
+    width: 100%;
+    height: 400px;
+}
 
+.header-content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allow the items to wrap to next line on smaller screens */
+}
+
+/* Adjust styles for smaller screens */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+
+    .header-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    nav ul li {
+        display: block; /* Display list items as block on smaller screens */
+        margin: 5px 0;
+    }
+}
 
 
 

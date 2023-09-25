@@ -4,7 +4,7 @@ const nextButton = document.getElementById('nextButton');
 const dateIndicator = document.getElementById('dateIndicator');
 
 const dates = {
-    1: 'Pre 1950',
+    1: '1895 - 1905',
     2: '1950',
     3: '1960',
     4: '1970',
