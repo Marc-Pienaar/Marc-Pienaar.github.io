@@ -352,6 +352,12 @@ button:hover:not(:disabled) {
     align-items: center;
     flex-wrap: wrap; /* Allow the items to wrap to next line on smaller screens */
 }
+.smaller-image img {
+    height: 40vh; /* 25% of viewport height */
+    width: auto;
+}
+
+
 
 /* Adjust styles for smaller screens */
 @media (max-width: 768px) {
