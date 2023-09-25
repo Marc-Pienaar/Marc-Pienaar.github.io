@@ -3,11 +3,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
+    font-size: 16px; /* Base font size for easy scaling */
 }
 
 header {
-    background-color: #2a5915;  /* dark blue */
-    color: #ffc72c;  /* gold */
+    background-color: #2a5915;
+    color: #ffc72c;
     padding: 0px;
     text-align: center;
 }
@@ -21,23 +22,19 @@ header {
 .header-content {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .header-icon {
     height: 64px;
     margin-right: 15px;
-}
-
-
-
-
-nav {
-    margin: 0px 0;
+    margin-bottom: 10px;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    text-align: center;
 }
 
 nav ul li {
@@ -48,6 +45,8 @@ nav ul li {
 nav ul li a {
     color: #ffc72c;
     text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
 }
 
 nav ul li a.active {
@@ -69,8 +68,6 @@ footer {
     bottom: 0;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
 #history {
     font-family: 'Playfair Display', serif;
     background: #F5F5DC;
@@ -78,10 +75,9 @@ footer {
     padding: 0px;
     border: 2px solid #D3A625;
     margin: 0px;
-    width: 100%; /* adjust as needed */
-    height: 400px; /* adjust as needed */
-    overflow: auto; /* add scrollbars if needed */
-    /*padding: 16px; !* adjust as needed *!*/
+    width: 100%;
+    height: 400px;
+    overflow: auto;
 }
 
 #history h2, #history h3 {
@@ -97,14 +93,13 @@ footer {
     line-height: 1.6;
 }
 
-
 .tabContent {
     width: 100%;
-    display: none; /* Initially hidden */
+    display: none;
 }
 
 .tabContent.active {
-    display: block; /* Shows the active tab's content */
+    display: block;
 }
 
 .event-table {
@@ -114,16 +109,16 @@ footer {
 
 .event-table th, .event-table td {
     padding: 8px 15px;
-    border: 1px solid #b0c4de; /* Light steel blue for the table cells */
+    border: 1px solid #b0c4de;
 }
 
 .event-table th {
-    background-color: #3a5fcd; /* Masonic blue for table headers */
+    background-color: #3a5fcd;
     color: #ffffff;
 }
 
 .event-table tr.royal-arch td {
-    background-color: #8b0000; /* Royal Arch Red */
+    background-color: #8b0000;
     color: #ffffff;
 }
 
@@ -131,25 +126,30 @@ footer {
     background-color: #2a5815;
     color: #ffffff;
 }
+
 .event-table tr.general td {
     background-color: #b9b9bf;
     color: #09160e;
 }
 
-
 .event-table tr.installation td {
-    background-color: #daa520; /* Freemason gold */
+    background-color: #daa520;
     color: #2c3e50;
 }
 
 .event-table tr.kt td {
-    background-color: #ffffff; /* Freemason gold */
+    background-color: #ffffff;
     color: #bf2d41;
 }
+
+.legend {
+    padding-bottom: 20px;
+}
+
 .legend li {
     position: relative;
     list-style-type: none;
-    padding-left: 20px; /* Adjust as needed */
+    padding-left: 20px;
 }
 
 .legend li:before {
@@ -160,35 +160,29 @@ footer {
     width: 10px;
     height: 10px;
     transform: translateY(-50%);
-    background-color: #3a5fcd; /* Masonic blue for general events */
+    background-color: #3a5fcd;
 }
 
 .legend li.general:before {
-    background-color: #b9b9bf; /* Masonic blue for general events */
+    background-color: #b9b9bf;
 }
 
 .legend li.working:before {
-    background-color: #2a5815; /* Masonic blue for general events */
+    background-color: #2a5815;
 }
 
-
 .legend li.royal-arch:before {
-    background-color: #8b0000; /* Royal Arch Red */
+    background-color: #8b0000;
 }
 
 .legend li.kt:before {
-    background-color: #ffffff; /* Royal Arch Red */
+    background-color: #ffffff;
 }
-
-
 
 .legend li.installation:before {
-    background-color: #daa520; /* Freemason gold */
+    background-color: #daa520;
 }
 
-
-
-/* This styles the scrollable part of the events content. It's set up similarly to the history content. */
 .events-scroll-container {
     background: #F5F5DC;
     color: #5A463A;
@@ -199,29 +193,6 @@ footer {
     overflow: auto;
 }
 
-
-
-
-
-/* Hides all tab content by default */
-.tabContent {
-    display: none;
-}
-
-/* Shows the active tab's content (assuming you're using a class "active" for the active tab) */
-.tabContent.active {
-    display: block;
-}
-
-
-/* For the legend positioning */
-.legend {
-    padding-bottom: 20px; /* Adds some space below the legend */
-}
-
-#content {
-    padding-bottom: 70px; /* Adjusted to be more than the footer height, tweak as necessary */
-}
 .timeline-container {
     width: 80%;
     margin: 50px auto;
@@ -255,10 +226,6 @@ footer {
     color: #666;
 }
 
-/* Display the first event by default */
-.timeline-event[data-event="1"] {
-    display: block;
-}
 .controls {
     display: flex;
     align-items: center;
@@ -284,6 +251,7 @@ button:disabled {
 button:hover:not(:disabled) {
     background-color: #0056b3;
 }
+
 .slider-container {
     flex-grow: 1;
     margin: 0 15px;
@@ -300,15 +268,17 @@ button:hover:not(:disabled) {
     border-radius: 4px;
     border: 1px solid #e0e0e0;
 }
+
 .disclaimer {
-    background-color: #ffe58f; /* Pale yellow background for noticeability */
-    border: 1px solid #ffa940; /* Border color */
+    background-color: #ffe58f;
+    border: 1px solid #ffa940;
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
     font-style: italic;
     font-size: 0.9em;
 }
+
 #popup-window {
     display: none;
     position: fixed;
@@ -316,8 +286,8 @@ button:hover:not(:disabled) {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);  /* This gives a slightly transparent background to the rest of the page */
-    z-index: 1000;  /* Ensures the popup appears over other content */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 .popup-content {
@@ -347,36 +317,37 @@ button:hover:not(:disabled) {
     height: 400px;
 }
 
-.header-content {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap; /* Allow the items to wrap to next line on smaller screens */
-}
 .smaller-image img {
-    height: 40vh; /* 25% of viewport height */
+    height: 40vh;
     width: auto;
 }
 
-
-
-/* Adjust styles for smaller screens */
+/* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column; /* Stack items vertically on smaller screens */
+    body {
+        font-size: 14px; /* Adjust font size for mobile */
     }
 
-    .header-icon {
-        margin-right: 0;
-        margin-bottom: 10px;
+    .header-content {
+        flex-direction: column;
     }
 
     nav ul li {
-        display: block; /* Display list items as block on smaller screens */
+        display: block;
         margin: 5px 0;
     }
+
+    .popup-content {
+        width: 90%;
+    }
+
+    .timeline-container {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .smaller-image img {
+        max-width: 100%;
+        height: auto;
+    }
 }
-
-
-
-
-
