@@ -76,12 +76,11 @@ footer {
     font-family: 'Playfair Display', serif;
     background: #F5F5DC;
     color: #5A463A;
-    padding: 0px;
+    padding: 20px; /* Added padding */
     border: 2px solid #D3A625;
     margin: 0px;
     width: 100%;
-    height: 400px;
-    overflow: auto;
+    /* Removed fixed height and overflow properties */
 }
 
 #history h2, #history h3 {
@@ -197,15 +196,15 @@ footer {
     overflow: auto;
 }
 
-.timeline-container {
-    width: 80%;
-    margin: 50px auto;
-    position: relative;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+/*.timeline-container {*/
+/*    width: 80%;*/
+/*    margin: 50px auto;*/
+/*    position: relative;*/
+/*    background-color: #f9f9f9;*/
+/*    padding: 20px;*/
+/*    border-radius: 8px;*/
+/*    box-shadow: 0 4px 8px rgba(0,0,0,0.1);*/
+/*}*/
 
 .timeline-slider {
     width: 100%;
@@ -349,7 +348,9 @@ button:hover:not(:disabled) {
     .timeline-container {
         width: 100%;
         margin: 20px 0;
+        /* Ensure no fixed height or overflow is set here */
     }
+
 
     .smaller-image img {
         max-width: 100%;
@@ -398,6 +399,10 @@ button:hover:not(:disabled) {
     .contact-form button:hover, .contact-form button:focus {
         background-color: #003366;
         outline: none;
+    }
+    #content {
+        padding: 50px; /* Adjust padding for mobile */
+        padding-bottom: 150px; /* Extra space for the footer */
     }
 
     /* Responsive Design */
