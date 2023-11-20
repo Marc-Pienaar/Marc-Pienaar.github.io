@@ -4,6 +4,9 @@ body {
     padding: 0;
     background-color: #f0f0f0;
     font-size: 16px; /* Base font size for easy scaling */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -55,7 +58,9 @@ nav ul li a.active {
 
 #content {
     background-color: #fff;
-    padding: 20px;
+    padding: 100px;
+    flex: 1; /* Flex-grow to take available space */
+    padding-bottom: 150px; /* Extra space for the footer */
 }
 
 footer {
@@ -63,9 +68,8 @@ footer {
     color: #ffc72c;
     text-align: center;
     padding: 10px 0;
-    position: fixed;
+    position: relative; /* Changed from fixed to relative */
     width: 100%;
-    bottom: 0;
 }
 
 #history {
@@ -328,6 +332,7 @@ button:hover:not(:disabled) {
         font-size: 14px; /* Adjust font size for mobile */
     }
 
+
     .header-content {
         flex-direction: column;
     }
@@ -350,4 +355,63 @@ button:hover:not(:disabled) {
         max-width: 100%;
         height: auto;
     }
+    .contact-info, .contact-form {
+        margin-bottom: 20px;
+    }
+
+    .contact-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #333;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form textarea {
+        height: 150px; /* Increased height */
+        resize: vertical; /* Allow vertical resize */
+    }
+
+    .contact-form button {
+        background-color: #00458b;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover, .contact-form button:focus {
+        background-color: #003366;
+        outline: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            padding: 10px;
+        }
+    }
+    #content {
+        padding: 50px; /* Adjust padding for mobile */
+        padding-bottom: 150px; /* Extra space for the footer */
+    }
+
+
 }
